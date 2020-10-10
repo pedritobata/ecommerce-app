@@ -4,7 +4,7 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
-const products = require('./products');
+const productRoutes = require('./routes/productRoutes');
 
 const port = process.env.PORT || 5000;
 const app = express();
@@ -14,13 +14,7 @@ connectDB();
 
 app.use(cors());
 
-app.get("/api/products", (req,res) => {
-    res.json(products);
-});
-
-app.get("/api/products/:id", (req,res) => {
-    res.json(products.filter(prod => prod._id === req.params.id));
-});
+app.use('/api/products', productRoutes);
 
 app.get("/", (req,res) => {
     res.send("Ecommerce Backend running yeah...");
