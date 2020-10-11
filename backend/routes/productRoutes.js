@@ -9,6 +9,7 @@ const Product = require('../models/productModel');
 //@access Public
 router.get("/", asyncHandler(async (req,res) => {
     const products = await Product.find({});
+    //throw new Error("Guarda que se cayó todo")
     res.status(200).json(products);
 }));
 
