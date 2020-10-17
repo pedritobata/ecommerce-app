@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const asyncHandler = require('express-async-handler');//sirve para manejo de errores
+const PREFIX_FOR_LOGGING = "[Backend]";
 
 const Product = require('../models/productModel');
 
@@ -9,6 +10,7 @@ const Product = require('../models/productModel');
 //@access Public
 router.get("/", asyncHandler(async (req,res) => {
     const products = await Product.find({});
+    console.log(PREFIX_FOR_LOGGING, "products", products);
     //throw new Error("Guarda que se cayó todo")
     res.status(200).json(products);
 }));

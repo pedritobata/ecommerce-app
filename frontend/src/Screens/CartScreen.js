@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { addToCart } from "../actions/cartActions";
+import { addToCart, removeFromCart } from "../actions/cartActions";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import {
@@ -30,8 +30,8 @@ const CartScreen = (props) => {
     }
   }, [dispatch, productId, qty]);
 
-  const removeFromCartHandler = () => {
-
+  const removeFromCartHandler = (id) => {
+    dispatch(removeFromCart(id));
   }
 
   const checkoutHandler = () => {
@@ -70,7 +70,7 @@ const CartScreen = (props) => {
                     </Form.Control>
                   </Col>
                   <Col md={2}>
-                      <Button variant="light" onClick={removeFromCartHandler}>
+                      <Button variant="light" onClick={removeFromCartHandler.bind(null, item.product)}>
                         <i className="fas fa-trash"></i>
                       </Button>
                   </Col>
