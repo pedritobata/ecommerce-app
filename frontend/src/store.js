@@ -2,19 +2,25 @@ import { createStore, combineReducers, applyMiddleware } from "redux";
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import { productListReducer, productDetailsReducer } from "./reducers/productReducers";
+import { userLoginReducer } from "./reducers/userReducers";
 import { cartReducer } from './reducers/cartReducers';
 
 const reducer = combineReducers({
     productList: productListReducer,
     productDetails: productDetailsReducer,
-    cart: cartReducer
+    cart: cartReducer,
+    userLogin: userLoginReducer
 });
 
 let cartItemsFromStorage = [];
+let userInfoFromStorage = null;
 
 try{
-     cartItemsFromStorage = localStorage.getItem('cartItems') ? 
+    cartItemsFromStorage = localStorage.getItem('cartItems') ? 
     JSON.parse(localStorage.getItem('cartItems')): [];
+
+    userInfoFromStorage = localStorage.getItem('userInfo') ? 
+    JSON.parse(localStorage.getItem('userInfo')): null;
 }catch(err){
     console.log("Error en parseo del local storage")
    
@@ -24,6 +30,9 @@ try{
 const initialState = {
     cart: {
         cartItems: cartItemsFromStorage
+    },
+    userLogin: {
+        userInfo: userInfoFromStorage
     }
 };
 const middlewares = [thunk];

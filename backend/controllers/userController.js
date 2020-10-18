@@ -24,6 +24,10 @@ const authUser = asyncHandler(async (req,res) => {
     }
 });
 
+
+//@desc gets a User profile
+//@route /api/users/profile
+//@access Private
 const getUserProfile = asyncHandler(async (req,res) => {
     const user = req.user;
     if(user){
@@ -33,7 +37,7 @@ const getUserProfile = asyncHandler(async (req,res) => {
             email: user.email,
             isAdmin: user.isAdmin
         });
-        res.json(user);
+       // res.json(user);
     }else{
         res.status(404);
         throw new Error("User not found");
@@ -41,8 +45,38 @@ const getUserProfile = asyncHandler(async (req,res) => {
 })
 
 
+//@desc creates a new User in BD
+//@route /api/users
+//@access Private
+const registerUser = asyncHandler(async (req,res,next) => {
+    const {name, email, password} = req.body;
+    const userExists = await User.findOne({email});
+    if(userExists){
+        res.status(400);
+        throw new Error("User already exists.");
+    }
+
+    const user = await User.create({
+        name, 
+        email, 
+        password
+    });
+    if(user){
+        res.status(201).json({
+            id: user._id,
+            name: user.name,
+            email: user.email,
+            isAdmin: user.isAdmin,
+            token: generateToken(user._id)
+        });
+    }else{
+        res.status(404);
+        throw new Error("Cannot create new User");
+    }
+});
 
 module.exports = {
     authUser,
-    getUserProfile
+    getUserProfile,
+    registerUser
 }

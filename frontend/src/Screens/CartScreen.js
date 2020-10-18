@@ -50,7 +50,7 @@ const CartScreen = (props) => {
               <ListGroupItem key={item.name}>
                 <Row>
                   <Col md={2}>
-                    <Image src={item.image} fluid round alt={item.name} />
+                    <Image src={item.image} fluid round="true" alt={item.name} />
                   </Col>
                   <Col md={3}>
                     <Link to={`/product/${item.product}`}>{item.name}</Link>
