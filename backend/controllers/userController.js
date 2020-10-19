@@ -45,7 +45,7 @@ const getUserProfile = asyncHandler(async (req,res) => {
 })
 
 
-//@desc creates a new User in BD
+//@desc signs up a new User in BD
 //@route /api/users
 //@access Private
 const registerUser = asyncHandler(async (req,res,next) => {
