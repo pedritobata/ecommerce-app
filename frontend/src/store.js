@@ -16,21 +16,29 @@ const reducer = combineReducers({
     userUpdateProfile: userUpdateProfileReducer,
 });
 
-let cartItemsFromStorage = null;
-let userInfoFromStorage = null;
+let cartItemsFromStorage = [];
+let userInfoFromStorage = {};
 let shippingAddressFromStorage = null;
+
+const validateDataFromStorage = (data) => {
+    if(data !== "null" && data !== null
+    && data !== undefined && data !== "undefined"){
+        return true;
+    }
+    return false;
+}
 
 try{
     //Ojo que el localstorage al parecer guarda TODO COMO TEXTO PLANO!!!!
     //Por lo tanto, si en chrome se ve que el localstorage ha guardado un valor como undefined
     //en realidad NO es el tipo undefined de JS sino el texto undefined
-    cartItemsFromStorage = localStorage.getItem('cartItems') !== "undefined" ? 
+    cartItemsFromStorage = validateDataFromStorage(localStorage.getItem('cartItems')) ? 
     JSON.parse(localStorage.getItem('cartItems')): [];
 
-    userInfoFromStorage = localStorage.getItem('userInfo') !== "undefined"? 
+    userInfoFromStorage = validateDataFromStorage(localStorage.getItem('userInfo')) ? 
     JSON.parse(localStorage.getItem('userInfo')): null;
 
-    shippingAddressFromStorage = localStorage.getItem('shippingAddress') !== "undefined"? 
+    shippingAddressFromStorage = validateDataFromStorage(localStorage.getItem('shippingAddress'))? 
     JSON.parse(localStorage.getItem('shippingAddress')): {};
     
 }catch(err){
@@ -46,7 +54,11 @@ const initialState = {
         shippingAddress: shippingAddressFromStorage
     },
     userLogin: {
-        userInfo: userInfoFromStorage
+        userInfo: userInfoFromStorage,
+        
+    },
+    userDetails: {
+        user: {}
     }
 };
 const middlewares = [thunk];

@@ -70,6 +70,7 @@ export const userDetailsReducer = (state = { user: {}}, action) => {
       };
     case USER_DETAILS_SUCCESS:
       return {
+        ...state,
         loading: false,
         user: action.payload,
       };

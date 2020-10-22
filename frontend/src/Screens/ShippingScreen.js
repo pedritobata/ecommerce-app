@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { saveShippingAddress } from '../actions/cartActions';
 import Loader from '../components/Loader';
 import Message from '../components/Message';
+import CheckoutSteps from '../components/CheckoutSteps';
 
 const ShippingScreen = props => {
 
@@ -28,6 +29,7 @@ const ShippingScreen = props => {
 
     return (
         <FormContainer>
+          <CheckoutSteps step1 step2 />
         <h1>Shipping</h1>
        {/*  {message && <Message variant="danger">{message}</Message>}
         {error && <Message variant="danger">{error}</Message>}
