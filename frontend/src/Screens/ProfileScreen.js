@@ -45,7 +45,7 @@ const ProfileScreen = (props) => {
 
   return (
     <Row>
-      <Col md={4}>
+      <Col md={5}>
         <h3>My Profile</h3>
         {message && <Message variant="danger">{message}</Message>}
         {success && <Message variant="success">Profile updated</Message>}
@@ -91,7 +91,7 @@ const ProfileScreen = (props) => {
         <Button type="submit">Update</Button>
       </Form>
       </Col>
-      <Col md={8}>
+      <Col md={7}>
         <h3>My Orders</h3>
       </Col>
     </Row>

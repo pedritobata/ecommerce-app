@@ -21,7 +21,7 @@ export const addToCart = (id, qty) => {
       },
     });
 
-    localStorage.setItem("cartItems", JSON.stringify(getState().cartItems));
+    localStorage.setItem("cartItems", JSON.stringify(getState().cart.cartItems));
   };
 };
 
