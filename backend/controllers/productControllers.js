@@ -9,6 +9,7 @@ const Product = require('../models/productModel');
 const getProducts = asyncHandler(async (req,res) => {
     const products = await Product.find({});
     //throw new Error("Guarda que se cayó todo")
+   // res.setHeader("Etag", Math.random().toString());
     res.status(200).json(products);
 });
 
