@@ -72,6 +72,102 @@ const products = [
     rating: 4,
     numReviews: 12,
   },
+  {
+    name: 'AmazonBasics 48 Pack AA High-Performance Alkaline Batteries, 10-Year Shelf Life, Easy to Open Value Pack',
+    image: '/images/pilas-1.jpg',
+    description:
+      '10-year leak-free shelf life; air- and liquid-tight seal locks in the power until it’s needed thanks to the improved design, which includes dual crimps, a new zinc composition, and anti-corrosion components',
+    brand: 'Amazon',
+    category: 'Electronics',
+    price: 15.49,
+    countInStock: 10,
+    rating: 4.6,
+    numReviews: 406,
+  },
+  {
+    name: 'AmazonBasics 8-Sheet Capacity, Cross-Cut Paper and Credit Card Shredder, 4.1 Gallon',
+    image: '/images/cut-paper.jpg',
+    description:
+      'Cross-cut shred size: turns paper into small confetti-like pieces measuring 3/16 by 1-27/32 inches (5 by 47 mm); meets security level P-3 standards',
+    brand: 'Amazon',
+    category: 'Electronics',
+    price: 43.55,
+    countInStock: 35,
+    rating: 4.5,
+    numReviews: 203,
+  },
+  {
+    name: 'AmazonBasics Distortion Guitar Pedal',
+    image: '/images/distortion-pedal.jpg',
+    description:
+      'Guitar effect pedal for creating classic distortion tone; its stage distortion design effectively delivers a higher degree of distortion',
+    brand: 'Amazon',
+    category: 'Electronics',
+    price: 24.99,
+    countInStock: 21,
+    rating: 4.7,
+    numReviews: 102,
+  },
+  {
+    name: 'AmazonBasics Pleated Bed Skirt - Queen, Light Grey',
+    image: '/images/skirt-white.jpg',
+    description:
+      'Made in Green factory, an independent certification system that ensures textiles meet high safety and environmental standards.',
+    brand: 'Amazon',
+    category: 'Electronics',
+    price: 13.49,
+    countInStock: 10,
+    rating: 4.9,
+    numReviews: 356,
+  },
+  {
+    name: 'AmazonBasics Pro Gaming Headset - Black',
+    image: '/images/headset-gamer.jpg',
+    description:
+      'Compatible with a wide variety of gaming platforms including PC, Switch, Xbox, PS4 and more',
+    brand: 'Amazon',
+    category: 'Electronics',
+    price: 34.11,
+    countInStock: 56,
+    rating: 4.8,
+    numReviews: 125,
+  },
+  {
+    name: 'AmazonBasics 12-Piece Melamine Dinnerware Set - Service for 4, Grey Weathered Crackle',
+    image: '/images/dishes-ceramic.jpg',
+    description:
+      'Durable: made of break-resistant 100% melamine material (no fillers); BPA-free for added safety',
+    brand: 'Amazon',
+    category: 'Electronics',
+    price: 37.57,
+    countInStock: 27,
+    rating: 4.3,
+    numReviews: 20,
+  },
+  {
+    name: 'AmazonBasics Acoustic Guitar Amplifier, black (FGA-5B)',
+    image: '/images/amplifier-black.jpg',
+    description:
+      'Compact desktop-size guitar amp—perfect for practicing in any room of the home or at a friend’s house; fits easily in a backpack or bag for on-the-go portability',
+    brand: 'Amazon',
+    category: 'Electronics',
+    price: 54.42,
+    countInStock: 23,
+    rating: 4.8,
+    numReviews: 58,
+  },
+  {
+    name: 'AmazonBasics Enameled Cast Iron Dutch Oven-7.3-Quart, Navy, 7.3QT',
+    image: '/images/rice-olla.jpg',
+    description:
+      '7.3-quart cast iron dutch oven pot for cooking and baking in the oven or on the stovetop; Oven safe up to 400 degrees',
+    brand: 'Amazon',
+    category: 'Electronics',
+    price: 59.99,
+    countInStock: 89,
+    rating: 4.6,
+    numReviews: 652,
+  },
 ]
 
 module.exports = products;

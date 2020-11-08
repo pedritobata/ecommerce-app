@@ -5,6 +5,7 @@ const Order = require('../models/orderModel.js');
 // @route   POST /api/orders
 // @access  Private
 const addOrderItems = asyncHandler(async (req, res) => {
+  console.log("addOrderItems", addOrderItems);
   const {
     orderItems,
     shippingAddress,
@@ -13,12 +14,11 @@ const addOrderItems = asyncHandler(async (req, res) => {
     taxPrice,
     shippingPrice,
     totalPrice,
-  } = req.body
-
+  } = req.body;
+try{
   if (orderItems && orderItems.length === 0) {
-    res.status(400)
-    throw new Error('No order items')
-    return
+    res.status(400);
+    throw new Error('No order items');
   } else {
     const order = new Order({
       orderItems,
@@ -35,6 +35,10 @@ const addOrderItems = asyncHandler(async (req, res) => {
 
     res.status(201).json(createdOrder)
   }
+}catch(err){
+  res.status(500).json({error: err});
+}
+  
 })
 
 // @desc    Get order by ID

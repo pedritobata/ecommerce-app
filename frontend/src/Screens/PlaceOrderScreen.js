@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {
   ListGroup,
   Row,
@@ -11,8 +11,12 @@ import {
 import { Link } from "react-router-dom";
 import CheckoutSteps from "../components/CheckoutSteps";
 import { useSelector, useDispatch } from "react-redux";
+import Message from '../components/Message';
+import { createOrder } from '../actions/orderActions';
+import { ORDER_CREATE_RESET } from '../constants/orderConstants';
 
-const PlaceOrderScreen = (props) => {
+const PlaceOrderScreen = ({history}) => {
+  const dispatch = useDispatch();
   const { shippingAddress, paymentMethod, cartItems } = useSelector((state) => state.cart);
 
   const addDecimals = num => {
@@ -24,8 +28,30 @@ const PlaceOrderScreen = (props) => {
   const taxes = addDecimals(itemsTotal * 1.15);
   const total = itemsTotal + shippingFee + taxes;
 
-  const placeOrderhandler = ev => {
-      
+  const orderCreate = useSelector((state) => state.orderCreate);
+  const { order, success, error } = orderCreate;
+
+  useEffect(() => {
+    if (success) {
+      history.push(`/order/${order._id}`);
+      dispatch({ type: ORDER_CREATE_RESET });
+    }
+    // eslint-disable-next-line
+  }, [history, success]);
+
+  const placeOrderHandler = () => {
+    console.log("PlaceOrders>>>");
+    dispatch(
+      createOrder({
+        orderItems: cartItems,
+        shippingAddress: shippingAddress,
+        paymentMethod: paymentMethod,
+        itemsPrice: itemsTotal,
+        shippingPrice: shippingFee,
+        taxPrice: taxes,
+        totalPrice: total,
+      })
+    )
   }
 
   return (
@@ -50,8 +76,11 @@ const PlaceOrderScreen = (props) => {
            <ListGroupItem>
            <ListGroup variant="flush">
               <h2>Order items</h2>
-              {
-                  cartItems.map((item,index) => {
+              {  cartItems.length === 0 ? (
+                <Message>Your cart is empty</Message>
+              ) : 
+                  (
+                    cartItems.map((item,index) => {
                       return <ListGroupItem key={index}>
                           <Row>
                               <Col md={2}>
@@ -62,6 +91,7 @@ const PlaceOrderScreen = (props) => {
                           </Row>
                       </ListGroupItem>
                   })
+                  )
               }
             </ListGroup>
            </ListGroupItem>
@@ -95,9 +125,12 @@ const PlaceOrderScreen = (props) => {
                             <Col>${total}</Col>
                         </Row>
                     </ListGroupItem>
+                    <ListGroup.Item>
+                {error && <Message variant='danger'>{error}</Message>}
+              </ListGroup.Item>
                     <ListGroupItem>
                         <Row>
-                           <Button onClick={placeOrderhandler} variant="primary" block>Place order</Button>
+                           <Button  disabled={cartItems === 0} onClick={placeOrderHandler} variant="primary" block>Place order</Button>
                         </Row>
                     </ListGroupItem>
                   </ListGroup>
