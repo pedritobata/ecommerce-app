@@ -137,6 +137,7 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
       }
     );
 
+    console.log("response >>>", response);
     dispatch({
       type: USER_DETAILS_SUCCESS,
       payload: response.data,
