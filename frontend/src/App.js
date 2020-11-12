@@ -25,9 +25,9 @@ function App() {
   return (
     <BrowserRouter>
       <Header />
-      <main className="my-3">
+      <main className="mb-3">
         <Container>
-        <Route path='/order/:id' component={OrderScreen} />
+          <Route path='/order/:id' component={OrderScreen} />
           <Route path='/shipping' component={ShippingScreen} />
           <Route path='/payment' component={PaymentScreen} />
           <Route path='/placeorder' component={PlaceOrderScreen} />
@@ -60,8 +60,8 @@ function App() {
           <Route path='/' component={HomeScreen} exact />
 
         </Container>
-      </main>
       <Footer />
+      </main>
     </BrowserRouter>
   );
 }

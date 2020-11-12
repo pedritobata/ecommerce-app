@@ -1,7 +1,5 @@
-// Al Bootstrap customizations go here, before importing bootstrap sass!!
+// Al Bootstrap customizations following docs go here, before importing bootstrap sass!!
 //yeah!!
-
-
 
 
 
@@ -12,3 +10,6 @@
 @import '~bootstrap/scss/bootstrap.scss';
 @import "./bootswatch";
 @import "./variables";
+
+// Fine graned customizations
+//Carousel
