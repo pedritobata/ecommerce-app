@@ -13,3 +13,28 @@
 
 // Fine graned customizations
 //Carousel
+.carousel{
+    width: 100vw;
+    height: 60vh;
+}
+
+.carousel-inner{
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-item{
+    max-width: 100%;
+    max-height: 100%;
+}
+
+
+.carousel-item img{
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.carousel-caption{
+    bottom: 23%;
+}

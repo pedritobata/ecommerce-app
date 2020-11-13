@@ -25,7 +25,7 @@ function App() {
   return (
     <BrowserRouter>
       <Header />
-      <main className="mb-3">
+      <main className="mb-3 overflow-hidden">
         <Container>
           <Route path='/order/:id' component={OrderScreen} />
           <Route path='/shipping' component={ShippingScreen} />
@@ -50,6 +50,8 @@ function App() {
           />
           <Route path='/admin/product/:id/edit' component={ProductEditScreen} />
           <Route path='/admin/orderlist' component={OrderListScreen} />
+
+        </Container>
           <Route path='/search/:keyword' component={HomeScreen} exact />
           <Route path='/page/:pageNumber' component={HomeScreen} exact />
           <Route
@@ -58,8 +60,6 @@ function App() {
             exact
           />
           <Route path='/' component={HomeScreen} exact />
-
-        </Container>
       <Footer />
       </main>
     </BrowserRouter>
