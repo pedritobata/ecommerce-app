@@ -20,11 +20,14 @@ const Header = () => {
       <Navbar bg="light" variant="light" expand="lg" collapseOnSelect>
         <Container>
           <LinkContainer to="/">
-            <Navbar.Brand>My Awesome Store</Navbar.Brand>
+            <Navbar.Brand>
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSsOaxfsrER_2HyrZKnExlx4LOyuVgb7iNTBg&usqp=CAU" />{' '}
+              My Awesome Store
+              </Navbar.Brand>
           </LinkContainer>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-          <Route render={({ history }) => <SearchBox history={history} />} />
+          <Route path={["/", "/search", "/search/:text"]} exact render={({ history }) => <SearchBox history={history} />} />
             <Nav className="ml-auto">
               <LinkContainer to="/cart">
                 <Nav.Link><i className="fas fa-shopping-cart"></i> Cart</Nav.Link>

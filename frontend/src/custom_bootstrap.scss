@@ -38,3 +38,34 @@
 .carousel-caption{
     bottom: 23%;
 }
+
+// Nav Bar form
+a.navbar-brand > img{
+    width: 50px;
+}
+
+.form-inline{
+    flex: 1;
+}
+
+.form-inline > #btn-search:focus{
+    box-shadow: none !important;
+}
+
+.form-inline > input{
+    border-radius: 20px;
+}
+
+#btn-search:hover{
+    color: #8fad96;
+}
+
+@media (max-width: 992px){
+    #basic-navbar-nav{
+        margin-top: 3rem;
+    }
+
+    .form-inline > input{
+        width: 45% !important;
+    }
+}
